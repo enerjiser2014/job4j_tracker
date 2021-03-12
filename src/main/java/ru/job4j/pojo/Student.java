@@ -50,7 +50,7 @@ public class Student {
 
     public void setStartAt(String startAt) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        this.startAt = formatter.parse("2020-10-10");
+        this.startAt = formatter.parse(startAt);
 
     }
 }
