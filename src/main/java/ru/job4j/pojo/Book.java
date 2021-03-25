@@ -1,8 +1,17 @@
 package ru.job4j.pojo;
 
 public class Book {
-    String name;
-    int pageCount;
+    private String name;
+
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    private int pageCount;
 
     public  Book(String name, int pageCount){
         this.name = name;

@@ -9,13 +9,13 @@ public class Library {
         books[3] = new Book("Clean code", 700);
         for (int index = 0; index < books.length; index++) {
             Book b = books[index];
-            System.out.println(b.name + " - " + b.pageCount + " pages" );
+            System.out.println(b.getName() + " - " + b.getPageCount() + " pages" );
         }
         System.out.println("contain Clean code:");
         for (int index = 0; index < books.length; index++) {
             Book b = books[index];
-            if (b.name.equals("Clean code")) {
-                System.out.println(b.name + " - " + b.pageCount + " pages");
+            if (b.getName().equals("Clean code")) {
+                System.out.println(b.getName() + " - " + b.getPageCount() + " pages");
             }
         }
 
