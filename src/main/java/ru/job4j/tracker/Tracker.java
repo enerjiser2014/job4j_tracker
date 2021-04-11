@@ -12,6 +12,7 @@ public class Tracker {
         for (int index = 0; index < size; index++) {
             if (items[index].getId() == id) {
                 rsl = index;
+                break;
             }
         }
         return rsl;
@@ -41,18 +42,17 @@ public class Tracker {
     }
 
     public Item findById(int id) {
+        /* Находим индекс */
         int index = indexOf(id);
-        if (index !=-1) {
-            return items[index];
-        }
-        return null;
-        //return index != -1 ? items[index] : null;
+        /* Если индекс найден возвращаем item, иначе null */
+        return index != -1 ? items[index] : null;
     }
 
     public boolean replace(int id, Item item){
         boolean rsl = false;
         int index = indexOf(id);
         if (index != -1) {
+            item.setId(id);
             items[index] = item;
             rsl = true;
         }
