@@ -33,7 +33,6 @@ public class Tracker {
         Item[] byName = new Item[100];
         for (int index = 0; index < size; index++) {
             Item el = items[index];
-            // el.getname==key
             if (el.getName().equals(key)) {
                 byName[arrSize++] = el;
             }
@@ -42,9 +41,7 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        /* Находим индекс */
         int index = indexOf(id);
-        /* Если индекс найден возвращаем item, иначе null */
         return index != -1 ? items[index] : null;
     }
 
