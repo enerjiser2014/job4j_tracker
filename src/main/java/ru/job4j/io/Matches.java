@@ -21,6 +21,7 @@ public class Matches {
             if (count > 0) {
                 System.out.println("Осталось " + count + " спичек, следующий ход:");
             }
+            turn = !turn;
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
