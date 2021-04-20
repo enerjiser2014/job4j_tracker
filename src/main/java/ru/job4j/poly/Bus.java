@@ -5,8 +5,7 @@ public class Bus implements Transport {
     private int fuel;
 
     @Override
-    public void drive(int passangers) {
-        this.passangers = passangers;
+    public void drive() {
     }
 
     @Override
