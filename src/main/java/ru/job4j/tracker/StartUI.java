@@ -16,31 +16,32 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 tracker.add(item);
-            }
-            else if (select == 1) {
-                for (Item item:tracker.findAll()
-                     ) {
+            } else if (select == 1) {
+                for (Item item : tracker.findAll()
+                ) {
                     System.out.println(item);
                 }
-            }
-            else if (select == 2) {
+            } else if (select == 2) {
                 System.out.println("Enter task id to change: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter task name to change: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
-                if (!tracker.replace(id, newItem)){
-                    System.out.println("Error! id dont changed");
+                if (!tracker.replace(id, newItem)) {
+                    System.out.println("Error! can't change");
+                } else {
+                    System.out.println("id: " + id + " changed");
                 }
-            }
-            else if (select == 3) {
+            } else if (select == 3) {
                 System.out.println("Enter task id to delete: ");
                 int id = Integer.parseInt(scanner.nextLine());
-                if (!tracker.delete(id)){
-                    System.out.println("Error! id dont deleted");
+                if (!tracker.delete(id)) {
+                    System.out.println("Error! id can't delete");
+                } else {
+                    System.out.println("id: " + id + " deleted");
                 }
-            }
-            else if (select == 4) {
+
+            } else if (select == 4) {
                 System.out.println("Enter task id to find: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 Item item = tracker.findById(id);
@@ -49,32 +50,30 @@ public class StartUI {
                 } else {
                     System.out.println("Error! task not found");
                 }
-            }
-            else if (select == 5) {
+            } else if (select == 5) {
                 System.out.println("Enter task name to find: ");
                 String taskName = scanner.nextLine();
                 Item items[] = tracker.findByName(taskName);
                 if (items.length > 0) {
-                    for (Item item:items) {
+                    for (Item item : items) {
                         System.out.println(item);
                     }
                 } else {
                     System.out.println("Error! task not found");
                 }
-            }
-            else if (select == 6) {
+            } else if (select == 6) {
                 run = false;
             }
         }
     }
 
     private void showMenu() {
-        System.out.println("0. Add new Item\n" +
-                "1. Show all items\n" +
-                "2. Edit item\n" +
-                "3. Delete item\n" +
-                "4. Find item by Id\n" +
-                "5. Find items by name\n" +
+        System.out.println("0. Add new Item" + System.lineSeparator() +
+                "1. Show all items" + System.lineSeparator() +
+                "2. Edit item" + System.lineSeparator() +
+                "3. Delete item" + System.lineSeparator() +
+                "4. Find item by Id" + System.lineSeparator() +
+                "5. Find items by name" + System.lineSeparator() +
                 "6. Exit Program");
     }
 
