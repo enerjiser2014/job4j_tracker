@@ -3,6 +3,7 @@ package ru.job4j.poly;
 public class Bus implements Transport {
     private int passangers;
     private int fuel;
+
     @Override
     public void drive(int passangers) {
         this.passangers = passangers;
@@ -12,5 +13,10 @@ public class Bus implements Transport {
     public int addFuel(int volume) {
         this.fuel += volume;
         return this.fuel;
+    }
+
+    @Override
+    public void setPassanger(int passangers) {
+        this.passangers = passangers;
     }
 }
