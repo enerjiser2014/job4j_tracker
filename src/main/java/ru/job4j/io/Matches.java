@@ -15,9 +15,9 @@ public class Matches {
             if (matches > 3 || matches < 1) {
                 System.out.println("Ошибка! Вы должны были ввести число от 1 до 3, ход переходит следующему игроку.");
                 continue;
-            } else {
-                count -= matches;
             }
+            count -= matches;
+
             if (count > 0) {
                 System.out.println("Осталось " + count + " спичек, следующий ход:");
             }
