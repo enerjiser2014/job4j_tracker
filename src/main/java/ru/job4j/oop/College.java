@@ -1,6 +1,8 @@
 package ru.job4j.oop;
 
 public class College {
-    Student firstObj = new Freshman();
-    Object secondObject = firstObj;
+    public static void main(String[] args) {
+        Student firstObj = new Freshman();
+        Object secondObject = firstObj;
+    }
 }
