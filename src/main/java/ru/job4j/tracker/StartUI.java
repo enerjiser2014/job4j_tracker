@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    private static void createItem(ConsoleInput input, Tracker tracker) {
+    public static void createItem(ConsoleInput input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String msg = "Enter name: ";
         String name = input.askStr(msg);
@@ -28,7 +28,7 @@ public class StartUI {
         }
     }
 
-    private static void FindItemById(ConsoleInput input, Tracker tracker) {
+    public static void FindItemById(ConsoleInput input, Tracker tracker) {
         int id = Integer.parseInt(input.askStr("Enter task id to find: "));
         Item item = tracker.findById(id);
         if (item != null) {
@@ -38,7 +38,7 @@ public class StartUI {
         }
     }
 
-    private static void deleteItem(ConsoleInput input, Tracker tracker) {
+    public static void deleteItem(ConsoleInput input, Tracker tracker) {
         int id = Integer.parseInt(input.askStr("Enter task id to delete: "));
         if (!tracker.delete(id)) {
             System.out.println("Error! id can't delete");
@@ -47,7 +47,7 @@ public class StartUI {
         }
     }
 
-    private static void findItemByName(ConsoleInput input, Tracker tracker) {
+    public static void findItemByName(ConsoleInput input, Tracker tracker) {
         String taskName = input.askStr("Enter task name to find: ");
         Item items[] = tracker.findByName(taskName);
         if (items.length > 0) {
