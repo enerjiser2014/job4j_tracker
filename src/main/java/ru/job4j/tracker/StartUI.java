@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    public static void createItem(ConsoleInput input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String msg = "Enter name: ";
         String name = input.askStr(msg);
@@ -18,7 +18,7 @@ public class StartUI {
     }
 
     public static void replaceItem(ConsoleInput input, Tracker tracker) {
-        int id = Integer.parseInt(input.askStr("Enter task id to change: "));
+        int id = input.askInt("Enter task id to change: ");
         String name = input.askStr("Enter task name to change: ");
         Item newItem = new Item(name);
         if (!tracker.replace(id, newItem)) {
@@ -29,7 +29,7 @@ public class StartUI {
     }
 
     public static void FindItemById(ConsoleInput input, Tracker tracker) {
-        int id = Integer.parseInt(input.askStr("Enter task id to find: "));
+        int id = input.askInt("Enter task id to find: ");
         Item item = tracker.findById(id);
         if (item != null) {
             System.out.println(item);
@@ -39,7 +39,7 @@ public class StartUI {
     }
 
     public static void deleteItem(ConsoleInput input, Tracker tracker) {
-        int id = Integer.parseInt(input.askStr("Enter task id to delete: "));
+        int id = input.askInt("Enter task id to delete: ");
         if (!tracker.delete(id)) {
             System.out.println("Error! id can't delete");
         } else {
@@ -63,9 +63,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.print("Select: ");
-            String msg = "(Здесь может быть ваша реклама)";
-            int select = Integer.parseInt(input.askStr(msg));
+            int select = input.askInt("Select: ");
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
