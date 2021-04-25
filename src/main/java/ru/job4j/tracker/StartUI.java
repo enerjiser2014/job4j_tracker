@@ -17,7 +17,7 @@ public class StartUI {
         }
     }
 
-    public static void replaceItem(ConsoleInput input, Tracker tracker) {
+    public static void replaceItem(Input input, Tracker tracker) {
         int id = input.askInt("Enter task id to change: ");
         String name = input.askStr("Enter task name to change: ");
         Item newItem = new Item(name);
@@ -28,7 +28,7 @@ public class StartUI {
         }
     }
 
-    public static void FindItemById(ConsoleInput input, Tracker tracker) {
+    public static void FindItemById(Input input, Tracker tracker) {
         int id = input.askInt("Enter task id to find: ");
         Item item = tracker.findById(id);
         if (item != null) {
@@ -38,7 +38,7 @@ public class StartUI {
         }
     }
 
-    public static void deleteItem(ConsoleInput input, Tracker tracker) {
+    public static void deleteItem(Input input, Tracker tracker) {
         int id = input.askInt("Enter task id to delete: ");
         if (!tracker.delete(id)) {
             System.out.println("Error! id can't delete");
@@ -47,7 +47,7 @@ public class StartUI {
         }
     }
 
-    public static void findItemByName(ConsoleInput input, Tracker tracker) {
+    public static void findItemByName(Input input, Tracker tracker) {
         String taskName = input.askStr("Enter task name to find: ");
         Item items[] = tracker.findByName(taskName);
         if (items.length > 0) {
@@ -59,7 +59,7 @@ public class StartUI {
         }
     }
 
-    public void init(ConsoleInput input, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
