@@ -11,9 +11,10 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
+        Output out = new StubOutput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
+                new CreateAction(out),
                 new ExitAction()
         };
         new StartUI().init(in, tracker, actions);
@@ -22,6 +23,7 @@ public class StartUITest {
 
     @Test
     public void whenReplaceItem() {
+        Output out = new StubOutput();
         Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Replaced item"));
@@ -31,7 +33,7 @@ public class StartUITest {
                 new String[] {"0", "1", replacedName, "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(),
+                new ReplaceAction(out),
                 new ExitAction()
         };
         new StartUI().init(in, tracker, actions);
@@ -40,6 +42,7 @@ public class StartUITest {
 
     @Test
     public void whenDeleteItem() {
+        Output out = new StubOutput();
         Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Deleted item"));
@@ -48,7 +51,7 @@ public class StartUITest {
                 new String[] {"0" , "1" , "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(),
+                new DeleteAction(out),
                 new ExitAction()
         };
         new StartUI().init(in, tracker, actions);

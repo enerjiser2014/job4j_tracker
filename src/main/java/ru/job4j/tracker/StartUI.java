@@ -20,15 +20,16 @@ public class StartUI {
 
 
     public static void main(String[] args) {
+        ConsoleOutput out = new ConsoleOutput();
         ConsoleInput input = new ConsoleInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
-                new FindAllAction(),
-                new ReplaceAction(),
-                new DeleteAction(),
-                new FindByIdAction(),
-                new FindByNameAction(),
+                new CreateAction(out),
+                new FindAllAction(out),
+                new ReplaceAction(out),
+                new DeleteAction(out),
+                new FindByIdAction(out),
+                new FindByNameAction(out),
                 new ExitAction(),
 
         };
