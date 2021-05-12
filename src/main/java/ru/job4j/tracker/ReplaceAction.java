@@ -18,9 +18,9 @@ public class ReplaceAction implements UserAction {
         String name = input.askStr("Enter task name to change: ");
         Item newItem = new Item(name);
         if (!tracker.replace(id, newItem)) {
-            System.out.println("Error! can't change");
+            out.println("Error! can't change");
         } else {
-            System.out.println("id: " + id + " changed");
+            out.println("id: " + id + " changed");
         }
         return true;
     }

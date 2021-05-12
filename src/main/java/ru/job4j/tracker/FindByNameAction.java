@@ -18,10 +18,10 @@ public class FindByNameAction implements UserAction{
         Item items[] = tracker.findByName(taskName);
         if (items.length > 0) {
             for (Item item : items) {
-                System.out.println(item);
+                out.println(item);
             }
         } else {
-            System.out.println("Error! task not found");
+            out.println("Error! task not found");
         }
         return true;
     }

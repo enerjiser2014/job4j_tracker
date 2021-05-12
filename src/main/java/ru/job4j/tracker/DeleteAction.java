@@ -16,9 +16,9 @@ public class DeleteAction implements UserAction{
     public boolean execute(Input input, Tracker tracker) {
         int id = input.askInt("Enter task id to delete: ");
         if (!tracker.delete(id)) {
-            System.out.println("Error! id can't delete");
+            out.println("Error! id can't delete");
         } else {
-            System.out.println("id: " + id + " deleted");
+            out.println("id: " + id + " deleted");
         }
         return true;
     }
