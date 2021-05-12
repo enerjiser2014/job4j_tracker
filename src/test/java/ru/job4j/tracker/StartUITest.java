@@ -59,4 +59,25 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
+
+    @Test
+    public void whenFindAll() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item[] items = new Item[3];
+        int count = 0;
+        while (count < items.length) {
+            items[count++] = tracker.add(new Item("test"));
+        }
+        Input in = new StubInput(
+                new String[] {"0" , "1"}
+        );
+        UserAction[] actions = {
+                new FindAllAction(out),
+                new ExitAction()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findAll(), is(items));
+    }
+
 }
