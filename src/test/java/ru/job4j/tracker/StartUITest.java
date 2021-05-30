@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
@@ -65,10 +65,10 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item[] items = new Item[3];
-        int count = 0;
-        while (count < items.length) {
-            items[count++] = tracker.add(new Item("test"));
-        }
+        items[0] = tracker.add(new Item("test1"));
+        items[1] = tracker.add(new Item("test2"));
+        items[2] = tracker.add(new Item("test3"));
+
         Input in = new StubInput(
                 new String[] {"0" , "1"}
         );
@@ -77,7 +77,10 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll(), is(items));
+        Item[] check = tracker.findAll();
+        assertThat(out.toString(), containsString(check[0].toString()));
+        assertThat(out.toString(), containsString(check[1].toString()));
+        assertThat(out.toString(), containsString(check[2].toString()));
     }
 
     @Test
@@ -85,11 +88,9 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item[] items = new Item[3];
-        int count = 0;
-        while (count < items.length) {
-            items[count] = tracker.add(new Item("test"+(count+1)));
-            count++;
-        }
+        items[0] = tracker.add(new Item("test1"));
+        items[1] = tracker.add(new Item("test2"));
+        items[2] = tracker.add(new Item("test3"));
         Input in = new StubInput(
                 new String[] {"0" , "1"}
         );
@@ -101,7 +102,7 @@ public class StartUITest {
         // check results
         int id = 1;
         Item check = tracker.findById(id);
-        assertThat(check.getId(), is(id));
+        assertThat(out.toString(), containsString(check.toString()));
     }
 
     @Test
@@ -109,11 +110,9 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item[] items = new Item[3];
-        int count = 0;
-        while (count < items.length) {
-            items[count] = tracker.add(new Item("test"+(count+1)));
-            count++;
-        }
+        items[0] = tracker.add(new Item("test1"));
+        items[1] = tracker.add(new Item("test2"));
+        items[2] = tracker.add(new Item("test3"));
         Input in = new StubInput(
                 new String[] {"0" , "1"}
         );
@@ -125,7 +124,7 @@ public class StartUITest {
         // check results
         Item findByName  = tracker.findByName("test1")[0];
         Item check = tracker.findById(1);
-        assertThat(findByName, is(check));
+        assertThat(out.toString(), containsString(check.toString()));
     }
 
 }
