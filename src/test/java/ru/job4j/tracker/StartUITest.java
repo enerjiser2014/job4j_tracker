@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
-    String ln = System.lineSeparator();
     @Test
     public void whenCreateItem() {
         Input in = new StubInput(
@@ -63,6 +62,7 @@ public class StartUITest {
 
     @Test
     public void whenFindAll() {
+        String ln = System.lineSeparator();
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item[] items = new Item[3];
@@ -96,28 +96,39 @@ public class StartUITest {
 
     @Test
     public void whenFindByIdAction() {
+        String ln = System.lineSeparator();
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item[] items = new Item[3];
-        items[0] = tracker.add(new Item("test1"));
-        items[1] = tracker.add(new Item("test2"));
-        items[2] = tracker.add(new Item("test3"));
+        Item[] items = new Item[4];
+        items[1] = tracker.add(new Item("test1"));
+        items[2] = tracker.add(new Item("test2"));
+        items[3] = tracker.add(new Item("test3"));
+        int id = 1;
         Input in = new StubInput(
-                new String[] {"0" , "1"}
+                new String[] {"0" , String.valueOf(id), "1"}
         );
         UserAction[] actions = {
-                new FindAllAction(out),
+                new FindByIdAction(out),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
         // check results
-        int id = 1;
-        Item check = tracker.findById(id);
-        assertThat(out.toString(), containsString(check.toString()));
+
+        assertThat(out.toString(), is(
+                "Menu. " + ln +
+                        "0. Find item by Id" + ln +
+                        "1. Exit program" + ln +
+                        items[id].toString() + ln +
+                        "Menu. " + ln +
+                        "0. Find item by Id" + ln +
+                        "1. Exit program" + ln
+                )
+        );
     }
 
     @Test
     public void whenFindByNameAction() {
+        String ln = System.lineSeparator();
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item[] items = new Item[4];
