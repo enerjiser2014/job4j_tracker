@@ -84,9 +84,9 @@ public class StartUITest {
                 "Menu. " + ln +
                         "0. Show all items" + ln +
                         "1. Exit program" + ln +
-                        items[0].toString() + ln +
-                        items[1].toString() + ln +
-                        items[2].toString() + ln +
+                        items[0] + ln +
+                        items[1] + ln +
+                        items[2] + ln +
                         "Menu. " + ln +
                         "0. Show all items" + ln +
                         "1. Exit program" + ln
@@ -118,7 +118,7 @@ public class StartUITest {
                 "Menu. " + ln +
                         "0. Find item by Id" + ln +
                         "1. Exit program" + ln +
-                        items[id].toString() + ln +
+                        items[id] + ln +
                         "Menu. " + ln +
                         "0. Find item by Id" + ln +
                         "1. Exit program" + ln
@@ -151,7 +151,7 @@ public class StartUITest {
                 "Menu. " + ln +
                         "0. Find items by name" + ln +
                         "1. Exit program" + ln +
-                        items[index].toString() + ln +
+                        items[index] + ln +
                         "Menu. " + ln +
                         "0. Find items by name" + ln +
                         "1. Exit program" + ln
