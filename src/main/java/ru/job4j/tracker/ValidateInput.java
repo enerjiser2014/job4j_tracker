@@ -9,7 +9,6 @@ public class ValidateInput implements Input{
         this.in = in;
     }
 
-
     @Override
     public String askStr(String question) {
         return in.askStr(question);
